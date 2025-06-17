@@ -22,3 +22,8 @@ The schematic contains 12 servoes, one pca9685 driver, the USB power board for t
 Started on the IK solver for this doggo. Had to do some research on how to actually(properly) do inverse kinematics(math on how to move the joints to move the paw to a specific point)
 
 **Time Spent: 3hr**
+
+# June 17th - Updated Cad and finished firmware
+
+Added a lid to the dog. Also, my firmware is pretty much finished<br>
+![<alt text>](image-1.png)<br>

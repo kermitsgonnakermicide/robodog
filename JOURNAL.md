@@ -25,5 +25,14 @@ Started on the IK solver for this doggo. Had to do some research on how to actua
 
 # June 17th - Updated Cad and finished firmware
 
-Added a lid to the dog, to protecc the dog. Also, my firmware is pretty much finished, and i'll upload the ROS package today<br>
+Added a lid to the dog, to protecc the dog. Also, my firmware is pretty much finished, and i'll upload the ROS stuff today<br>
 ![<alt text>](image-1.png)<br>
+
+# June 17th-18th - ROS TIME BAYBEEEEEEEEEEE!
+
+Finally finished my ros packages for the doggo. The project can be split into 4 distinct packages:<br>
+**servo_driver**:the 'hardware interface' for this. Runs the dual PCA9685 drivers required for our doggo<br>
+**leg_walker**: does the actual heavy lifting for IK<br>
+**slam_yplidar_x2**: uses the slam_toolbox for(you guessed it) SLAM, also known as simultaneous localization and mapping. basically, the missile needs to know where it is but dog<br>
+![alt text>](image-2.png)<br>
+**slam_stereo_picams**: another way to do slam, with a jetson stereo cam<br>

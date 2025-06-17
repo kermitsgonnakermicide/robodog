@@ -25,5 +25,5 @@ Started on the IK solver for this doggo. Had to do some research on how to actua
 
 # June 17th - Updated Cad and finished firmware
 
-Added a lid to the dog. Also, my firmware is pretty much finished<br>
+Added a lid to the dog, to protecc the dog. Also, my firmware is pretty much finished, and i'll upload the ROS package today<br>
 ![<alt text>](image-1.png)<br>

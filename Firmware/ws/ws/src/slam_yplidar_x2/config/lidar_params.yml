@@ -1,0 +1,17 @@
+ydlidar_ros2_driver_node:
+  ros__parameters:
+    port: "idk"
+    frame_id: "laser"
+    ignore_array: ""
+    baudrate: 128000
+    lidar_type: "X2"
+    device_type: "lidar"
+    sample_rate: 8000
+    abnormal_check_count: 4
+    resolution_fixed: true
+    reversion: false
+    angle_max: 180.0
+    angle_min: -180.0
+    range_max: 12.0
+    range_min: 0.12
+    frequency: 7.0

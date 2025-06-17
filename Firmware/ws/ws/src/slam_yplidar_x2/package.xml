@@ -1,0 +1,12 @@
+<package format="3">
+  <name>slam_yplidar_x2</name>
+  <version>0.1.0</version>
+  <description>SLAM using YDLIDAR X2 with slam_toolbox</description>
+  <maintainer email="daksh.vohra1@gmail.com">Daksh</maintainer>
+  <license>Apache-2.0</license>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>slam_toolbox</depend>
+  <depend>ydlidar_ros2_driver</depend>
+</package>

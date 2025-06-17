@@ -1,0 +1,13 @@
+servo_map:
+  leg1_rot: [0x40, 0]
+  leg1_up: [0x40, 1]
+  leg1_low: [0x40, 2]
+  leg2_rot: [0x40, 3]
+  leg2_up: [0x40, 4]
+  leg2_low: [0x40, 5]
+  leg3_rot: [0x41, 0]
+  leg3_up: [0x41, 1]
+  leg3_low: [0x41, 2]
+  leg4_rot: [0x41, 3]
+  leg4_up: [0x41, 4]
+  leg4_low: [0x41, 5]

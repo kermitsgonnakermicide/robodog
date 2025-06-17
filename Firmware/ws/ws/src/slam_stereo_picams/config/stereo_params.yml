@@ -1,0 +1,19 @@
+left_camera:
+  device: "/dev/video0"
+  frame_id: "stereo_left_camera"
+right_camera:
+  device: "/dev/video1"
+  frame_id: "stereo_right_camera"
+
+stereo:
+  baseline: 0.05       # meters
+  angle: 5.0           # degrees
+  fx: 600.0
+  fy: 600.0
+  cx: 320.0
+  cy: 240.0
+
+slam:
+  publish_tf: true
+  map_topic: "/stereo_map"
+  pose_topic: "/stereo_pose"

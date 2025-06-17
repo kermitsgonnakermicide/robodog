@@ -1,0 +1,11 @@
+<package format="3">
+  <name>servo_driver</name>
+  <version>0.1.0</version>
+  <description>Drives servos using PCA9685 over I2C</description>
+  <maintainer email="daksh.vohra1@gmail.com">Daksh Vohra</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+</package>

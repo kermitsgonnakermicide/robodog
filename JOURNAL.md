@@ -14,6 +14,7 @@ Anyways, I'm fairly sure im done with cadding this bad boi, but it took me WAYYY
 
 Made a schematic for this doggo, as I will not be using a PCB<br>
 The schematic contains 12 servoes, one pca9685 driver, the USB power board for the Pi and a GPS module<br>
+![alt text](image.png)<br>
 **Time Spent: 1hr**
 
 # June 14th - Firmware Pt1

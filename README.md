@@ -38,3 +38,5 @@ The whole ROS workspace is structured into 4 main packages:
   Experimental SLAM using stereo Raspberry Pi cameras + semi-jank depth estimation pipeline.
 
 ![alt text>](image-2.png)<br>
+
+**NOTE**: Reusing the lipo battery from a diff project<br>

@@ -25,17 +25,34 @@ The schematic includes:
 **ROS Packages**  
 The whole ROS workspace is structured into 4 main packages:
 
-- **servo_driver**:  
-  Hardware interface for the MG996Rs, using dual PCA9685 drivers and some basic smoothing to prevent servo death.
+- **servo_driver**  
+  The hardware interface layer. This node communicates with one or more PCA9685 boards via I2C to send position signals to each servo motor. It exposes a simple ROS2 service + topic interface that allows other nodes to command joint angles (in degrees or radians). It also implements basic limits, deadzone filtering, and optional torque hold toggling. Each servo is mapped to a specific joint name and leg index.
 
-- **leg_walker**:  
-  Main IK logic and paw trajectory planning — takes in commands and tells the legs where to go.
+- **leg_walker**  
+  This package does all the IK heavy lifting. It:
 
-- **slam_yplidar_x2**:  
-  SLAM using a YD Lidar X2 + `slam_toolbox`. Only really works indoors, but lets doggo know where it is
+  - Subscribes to target paw positions (either via a `/cmd_paw_pos` topic or internal walking scripts)
+  - Solves 3DOF inverse kinematics per leg (coxa, femur, tibia)
+  - Publishes joint angles to the `servo_driver`
+  - Supports gait generation — currently just a trot gait, but it's modular
+  - Includes walking state machines, leg timing, and paw trajectory interpolation
+    This is where all the math happens.
 
-- **slam_stereo_picams**:  
-  Experimental SLAM using stereo Raspberry Pi cameras + semi-jank depth estimation pipeline.
+- **slam_yplidar_x2**  
+  SLAM package using the YDLidar X2. It launches:
+
+  - A serial connection to the Lidar via `ydlidar_ros2_driver`
+  - `slam_toolbox` in synchronous mode
+  - RViz config for map + robot visualization
+    Outputs a 2D occupancy map and robot pose estimate. Currently uses fake odom + map merging but will be upgraded later with IMU + gait odometry.
+
+- **slam_stereo_picams**  
+  Alternate SLAM method using two Raspberry Pi cameras as a stereo pair (synced via GPIO trigger). It:
+  - Captures stereo image pairs
+  - Runs semi-global block matching or other stereo algorithm (WIP: OpenCV + rtabmap)
+  - Feeds into `rtabmap_ros` for visual SLAM
+  - Outputs a 3D point cloud and pose estimate
+    This is mostly experimental right now but promising for GPS-denied areas and outdoor mapping.
 
 ![alt text>](image-2.png)<br>
 

@@ -1,27 +1,32 @@
-**Total Time: 25hrs**
+**Total Time: 28hrs**
 
 # June 11th-12th: Fully CADed
 
-Started on this project by CADing everything I needed for the dog.<br>
-Decided _very early_ not to make any fancy enclosure — this robot is going to be constantly disassembled, hacked, and upgraded. Don't want to box myself in (literally).<br>
+Started off the project by launching Fusion 360 and blocking out the dog's main chassis. My main goal here was **functional simplicity** — something that’s easy to assemble, modify, and mount hardware on without disassembling half the bot every time I want to tweak one wire.
 
-The base design is simple but functional:
+The design I landed on has:
 
-- A central flat plate to mount all power electronics
-- Two oval end plates for mounting the servo legs
-- Holes for zip ties and cable routes (obviously essential engineering features)
+- A **flat center plate** that acts as the main body, made wide enough to comfortably hold the Pi, power distribution boards, battery, GPS, and (hopefully) a lidar
+- **Two rounded end plates** — just simple ovals that hold the servo brackets in place for each leg. These are symmetric and bolt straight onto the side of the center plate
+- Leg brackets aligned vertically to simplify the IK — each leg has a clean coordinate frame, and the coxa (hip) servo only rotates in one axis
 
-Each leg is a 3DOF system using MG996R servos — not the best, but they get the job done and are _everywhere_.<br>
+The whole CAD is parametric, so I can tweak servo spacing or leg lengths later without rebuilding everything.
+
+For now, I decided **not** to CAD any decorative shells or aesthetic casings — this robot is going to get opened and torn apart regularly as I iterate. Covers just slow down dev time and make wiring hellish.
+
+The legs themselves are **3DOF**, made up of:
+
+- Coxa (horizontal rotation)
+- Femur (up/down swing)
+- Tibia (final linkage)
+
+I'm using **MG996R servos** for all joints. They’re not ideal — big dead zones, analog feedback, and can burn out under load — but for their price and torque (~10kg-cm), they’re a solid starting point for a dev platform.
+
 ![leg](Assets/leg.png)
 
-Also tried budgeting a full SLAM setup — Lidar + Pi 4 8GB — but it's tight:
+At this point, I’m happy with the mechanical design — but it took way longer than expected (I’m 3 Red Bulls deep and very aware that I should’ve sketched this on paper first).
 
-- Printing cost: ₹6k
-- Pi 4: ₹10k
-- Misc electronics + batteries: ₹5k
-
-Fairly happy with how the CAD turned out, though I **massively** underestimated how long it would take.  
-**Time spent: 15hrs**
+**Time Spent: 15hrs**
 
 ---
 
@@ -39,21 +44,34 @@ The build doesn’t use a custom PCB (at least not yet), so this schematic was m
 
 Used the schematic as a build reference, mainly so I don’t fry something expensive.<br>
 ![alt text](image.png)<br>
-**Time Spent: 1hr**
+**Time Spent: 2hr**
 
 ---
 
 # June 14th - Firmware Pt1
 
-Started writing the IK solver. First step was just getting the math right:
+Finally jumped into the firmware side — specifically the **inverse kinematics (IK)** solver.
 
-- Solving inverse kinematics for a 3DOF leg
-- Using basic trig (law of cosines/sines, planar assumptions)
-- Sanity-checking paw reachability and angle limits
+I started with basic 2D planar IK just to get a feel for how the math works. Then gradually added complexity:
 
-I built it as a simple Python module for now, just to get the math debugged. Later it’ll be integrated into a ROS node.
+- Each leg is modeled as a 3-link manipulator
+- The joints are offset in real 3D space but constrained to operate on a 2D plane per leg
+- Used basic trigonometry — cosine law, sine law — to solve for femur and tibia angles
+- The coxa joint is just a simple `atan2(y, x)` to find the rotation from the robot’s center to the leg’s target
 
-**Time Spent: 3hr**
+The trickiest bit was solving for reachable vs. unreachable points — since these are cheap servos, they can't actually hold position reliably under tension. So I added a soft clamping system that limits paw positions to a safe working volume per leg.
+
+Once the math was stable, I built a standalone Python test script that:
+
+- Lets you type in an XYZ paw coordinate
+- Solves and visualizes the joint angles
+- Outputs the result in degrees, ready to be piped to the servo driver later
+
+Also added some forward kinematics functions so I can sanity-check the solved angles (and catch bugs in weird limb configs).
+
+Next: wrap this math in a ROS node.
+
+**Time Spent: 5hr**
 
 ---
 

@@ -2,7 +2,7 @@
 
 # June 11th-12th: Fully CADed
 
-Started off the project by launching Fusion 360 and blocking out the dog's main chassis. My main goal here was **functional simplicity** — something that’s easy to assemble, modify, and mount hardware on without disassembling half the bot every time I want to tweak one wire.
+Started off the project by launching Fusion 360 and blocking out the dog's main chassis. My main goal here was **functional simplicity** — something that’s easy to assemble, modify, and mount hardware on without disassembling half the bot every time i want to add/remove something.
 
 The design I landed on has:
 
@@ -12,7 +12,7 @@ The design I landed on has:
 
 The whole CAD is parametric, so I can tweak servo spacing or leg lengths later without rebuilding everything.
 
-For now, I decided **not** to CAD any decorative shells or aesthetic casings — this robot is going to get opened and torn apart regularly as I iterate. Covers just slow down dev time and make wiring hellish.
+For now, I decided **not** to CAD any decorative shells or aesthetic casings — this robot is going to get opened and torn apart regularly as I iterate. 
 
 The legs themselves are **3DOF**, made up of:
 
@@ -24,7 +24,7 @@ I'm using **MG996R servos** for all joints. They’re not ideal — big dead zon
 
 ![leg](Assets/leg.png)
 
-At this point, I’m happy with the mechanical design — but it took way longer than expected (I’m 3 Red Bulls deep and very aware that I should’ve sketched this on paper first).
+At this point, I’m happy with the mechanical design — but it took way longer than expected (I’m 3 redbulls deep and fully aware that I should’ve sketched this on paper first, but I cannot draw).
 
 **Time Spent: 15hrs**
 

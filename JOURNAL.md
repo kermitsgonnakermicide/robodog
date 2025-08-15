@@ -110,4 +110,5 @@ I used a BNO086 for the IMU, a PCA9685 for servo control and this super cool ic,
 This is also SUPER small, so this should make our situation much more compact on the dog<br>
 ![alt text](image-4.png)
 ![alt](img.png)
+![alt text](image-3.png)
 **Time Spent: 4.5hr**

@@ -12,7 +12,7 @@ The design I landed on has:
 
 The whole CAD is parametric, so I can tweak servo spacing or leg lengths later without rebuilding everything.
 
-For now, I decided **not** to CAD any decorative shells or aesthetic casings — this robot is going to get opened and torn apart regularly as I iterate. 
+For now, I decided **not** to CAD any decorative shells or aesthetic casings — this robot is going to get opened and torn apart regularly as I iterate.
 
 The legs themselves are **3DOF**, made up of:
 
@@ -102,68 +102,19 @@ If I were to make a PCB, i could make two different ones for two different purpo
 
 Wrapped up the ROS2 workspace! This was the big milestone. The whole project is now structured as 4 packages:
 
----
+1. **servo_driver** – I2C interface to PCA9685, angle commands, watchdog safety.
+2. **leg_walker** – IK per leg, gait generation, coordinated trajectories.
+3. **slam_yplidar_x2** – 2D SLAM pipeline with YDLidar X2 + slam_toolbox.
+4. **slam_stereo_picams** – WIP stereo depth + SLAM for outdoor mapping.
 
-### **servo_driver**
-
-The hardware abstraction layer.  
-Written in `rclpy`, this node:
-
-- Talks to one (or two) PCA9685 servo drivers via I2C
-- Receives joint angle commands (in radians or degrees)
-- Publishes current servo state (mostly for debugging)
-- Has a watchdog system to stop movement if no command received
-
-It exposes:
-
-- `/set_joint_angle` service (per joint)
-- `/set_leg_pose` topic (batch commands per leg)
-- Optional `/enable_torque` toggle
-
----
-
-### **leg_walker**
-
-This is the brain of the walking system. It:
-
-- Handles IK calculations per leg
-- Has a gait generator (currently trot, more coming)
-- Coordinates paw trajectories using phase offsets and timing
-- Publishes joint angles to `servo_driver`
-- Includes a `walk_controller` node to send commands like `walk_forward(speed)` or `rotate_left(angle)`
-
-Uses a parameterized `robot.yaml` config to define joint lengths, servo orientations, and bounds.
-
----
-
-### **slam_yplidar_x2**
-
-Runs 2D SLAM using a YDLidar X2 sensor.
-
-Launches:
-
-- `ydlidar_ros2_driver` (reads Lidar via serial)
-- `slam_toolbox` (in synchronous mode)
-- Static transforms to `/base_link`
-- RViz with a custom config
-
-Map is built in real-time and saved to a `.pgm`+`.yaml` pair. Robot pose is published on `/slam_pose`.
-
----
-
-### **slam_stereo_picams**
-
-Alternate 3D SLAM method using two Raspberry Pi cameras as a stereo pair (synchronized via GPIO).  
-Still very much a WIP, but:
-
-- Captures stereo image streams using `picamera2`
-- Uses OpenCV stereo depth maps (SGM block matcher)
-- Optionally feeds depth + RGB into `rtabmap_ros`
-- Will be used for outdoor SLAM and low-light mapping
-
-This branch will probably get moved to a Jetson board for performance.
-
----
-
+This structure keeps hardware control, locomotion logic, and perception modules separate — easier to maintain and swap out later.
 ![alt text>](image-2.png)<br>
 **Time Spent: 2hr**
+
+# August 10th - PCB time _bruh_
+
+alright so it appears I do HAVE to make a PCB, so I kinda slapped everything I could on there - servo control, power and even an IMU for stabilizing the robot(integrated into my gait stuff in ROS)<br>
+![alt text](image-3.png)
+I used a BNO086 for the IMU, a PCA9685 for servo control and this super cool ic, the TPS51397ARJER for power(anything VIN to 5v!!) reccomended to me by my friend aarav<br>
+This is also SUPER small, so this should make our situation much more compact on the dog<br>
+![alt text](image-4.png)

@@ -12,14 +12,16 @@ Later added a lid to keep things _mostly_ protected.<br>
 ![<alt text>](image-1.png)<br>
 
 **Electronics**<br>
-The schematic includes:
+I made a custom, 63 by 48 mm PCBA that has 5 major functions:<BR>
 
-- 12 MG996R servos
-- PCA9685 PWM driver
-- Raspberry Pi w/ power delivery board
-- GPS for potential a-b navigation
-  No PCB used here <br>
-  ![alt text](image.png)<br>
+- step down power from my 4s 14.8v lipo battery to 5v<br>
+- step up power from 5v to 7v to effectively power my servoes
+- output that 5v power to my raspi on USB<br>
+- control my servoes with a PCA9685<br>
+- one of the best IMUs, the BNO086 for optimizing gait<br>
+  ![alt text](image-4.png)
+  ![alt](img.png)
+  ![alt text](image-3.png)
 
 **Firmware**<br>
 **ROS Packages**  

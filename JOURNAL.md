@@ -1,4 +1,4 @@
-**Total Time: 28hrs**
+**Total Time: 32.5hrs**
 
 # June 11th-12th: Fully CADed
 
@@ -39,7 +39,6 @@ The build doesn’t use a custom PCB (at least not yet), so this schematic was m
 - 12x MG996R servos (3 per leg)
 - 1x PCA9685 servo driver
 - Pi 4 power via USB boost board
-- GPS module via UART
 - Optional second PCA driver for expansion
 
 Used the schematic as a build reference, mainly so I don’t fry something expensive.<br>
@@ -87,14 +86,7 @@ Finished the Python-based firmware:
 - Outputs angle commands in degrees (for PCA9685)
 
 Next step: slap it into ROS.<br>
-
-Also, I decided against using a PCB because of one simple reason: cost<BR>
-If I were to make a PCB, i could make two different ones for two different purposes<br>
-
-- One could be a power distribution PCB with the XY3006, just with an XT60 input but with PCBA costs and import duties, a 150 rupee xy3006 board + a cheap XT60 plug to wire thing looks much better in front of a 5k+ PCBA(not even including the 100%+ import duties(thanks, nirmala))
-- Another one could be a PCA9685 carrier board with an I2C multiplexer but honestly I can slap both of those together for 15-20x cheaper because yet again(lets say it together), our lord and saviour, nirmala sitaraman<br>
-  I do understand the point of highway is for us to do things like this but honestly it just seems irresponsible, and I think my project will have enough complexity with the ROS stuff coming up<br>
-  **Time Spent: 4hr**
+**Time Spent: 4hr**
 
 ---
 
@@ -114,7 +106,8 @@ This structure keeps hardware control, locomotion logic, and perception modules 
 # August 10th - PCB time _bruh_
 
 alright so it appears I do HAVE to make a PCB, so I kinda slapped everything I could on there - servo control, power and even an IMU for stabilizing the robot(integrated into my gait stuff in ROS)<br>
-![alt text](image-3.png)
 I used a BNO086 for the IMU, a PCA9685 for servo control and this super cool ic, the TPS51397ARJER for power(anything VIN to 5v!!) reccomended to me by my friend aarav<br>
 This is also SUPER small, so this should make our situation much more compact on the dog<br>
 ![alt text](image-4.png)
+![alt](img.png)
+**Time Spent: 4.5hr**

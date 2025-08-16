@@ -59,3 +59,20 @@ The whole ROS workspace is structured into 4 main packages:
 ![alt text>](image-2.png)<br>
 
 **NOTE**: Reusing the lipo battery from a diff project<br>
+
+**BOM**
+|ITEM |QTY|TOTAL |SRC |NOTES |
+|-----------------------|---|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+|Raspberry Pi 5 8GB |1 |94.82 |https://www.silverlineelectronics.in/collections/raspberry-pi-5-official-accessories/products/raspberry-pi-5-model-b-8gb-ram |I require an 8GB because I dont just need to use ROS - within it, I also need to do SLAM(even more computationally expensive)|
+|RPi 5 Active Cooler |1 |5.27 |https://www.silverlineelectronics.in/collections/raspberry-pi-cooling-tech | |
+|SD Card |1 |6.93 |https://www.amazon.in/SAMSUNG-Adaptor-Expanded-Storage-MB-MC64SA/dp/B0CXJ5Q222/ref=sr_1_3?crid=2JX27GGIJJTGI&dib=eyJ2IjoiMSJ9.W0mEzbMqa_UC3GB83swgkYea9f_3bRa4nMoh5j8uNEkChp42zWEkQpLMc0DnmWqmeu-AuuhK89UciyKu_5SFswRarCA-pBkkO60Q20oIBA_fkTCwYzRS_bEmYCP8yWifGQWiN7IS3pzrRxGHj_bR59EVNZ7nKRTTJQgCTymu6a5_LKu5mFX9u4Qt-aeNY8PHtSEAPnHDRGtQwz8awrEL67j54Ov63FOAKBYw6o2EqSo.z2cyXBa8m8xP1fLej5w40OuPwxTdFYv78CPP1mV_vY4&dib_tag=se&keywords=64gb+sd+card+evo&qid=1750190942&sprefix=64gb+sd+card+evo,aps,226&sr=8-3&th=1| |
+|Waveshare Stereo Camera|1 |47.76 |https://hubtronics.in/imx219-83-stereo-camera | |
+|YDLIDAR X2 |1 |60.99 |https://www.electronicscomp.com/ydlidar-x2-360-degree-ros-scanner-for-navigation-collision-avoidance-8m?srsltid=AfmBOorwLINheGIH6_5-cDKKJgGNAVWmLa5pv0aLsJ3wuyl8X8SN1hhzP3Q&gRefinements=SORT_BY:Price:+low+to+high | |
+|PCBA |1 |129 |https://hc-cdn.hel1.your-objectstorage.com/s/v3/cd5c9a744fc6b144acc7592c6a4c4ebfb7888e05_image.png |LionCircuits |
+|XT60PW-m |1 |1.91 |https://www.drkstore.in/amass-xt60pw-f20-connector/ |Not available to procure on LionCircuits, also including delivery |
+|USB A |1 |0.17 |https://robu.in/product/u221-041n-1wr69-s5-xkb-1-5a-1-4p-female-40%e2%84%8385%e2%84%83-type-a-plugin-usb-connectors-rohs/ |Will cover myself, not available on LionCircuits |
+|MG996R |12 |48.62 |https://sharvielectronics.com/product/mg996r-metal-gear-servo-motor/?srsltid=AfmBOoqSlyks-1TuudDgubd_qj9fNCwaQsQTs6MFmUkCxiBuGM9Gln68fNU | |
+| | | | | |
+| | | | | |
+| | |395.47| | |
+**NOTE: Will also cover the MG996s myself to ensure that i'm under budget**

@@ -1,4 +1,4 @@
-# ROS Doggo
+# OpenDoggo
 
 A quadruped robot platform running ROS2 Humble on a Raspberry Pi 4 with 3DOF legs and an optional SLAM capability via either Lidar and stereo vision.<br>
 
